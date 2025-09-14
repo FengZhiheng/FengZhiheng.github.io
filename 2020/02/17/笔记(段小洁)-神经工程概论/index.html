@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fengzhiheng.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="神经工程概论，使用的教材是brain facts.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="神经工程概论-课程笔记">
+<meta property="og:url" content="https://fengzhiheng.github.io/2020/02/17/%E7%AC%94%E8%AE%B0(%E6%AE%B5%E5%B0%8F%E6%B4%81)-%E7%A5%9E%E7%BB%8F%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%AE%BA/index.html">
+<meta property="og:site_name" content="Feng Zhiheng&#39;s Blog">
+<meta property="og:description" content="神经工程概论，使用的教材是brain facts.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-17T02:53:13.000Z">
+<meta property="article:modified_time" content="2025-09-14T13:57:40.006Z">
+<meta property="article:author" content="Feng Zhiheng">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fengzhiheng.github.io/2020/02/17/%E7%AC%94%E8%AE%B0(%E6%AE%B5%E5%B0%8F%E6%B4%81)-%E7%A5%9E%E7%BB%8F%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%AE%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>神经工程概论-课程笔记 | Feng Zhiheng's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Feng Zhiheng's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">      
+      
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">      
+      
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">      
+      
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fengzhiheng.github.io/2020/02/17/%E7%AC%94%E8%AE%B0(%E6%AE%B5%E5%B0%8F%E6%B4%81)-%E7%A5%9E%E7%BB%8F%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%AE%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Feng Zhiheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Feng Zhiheng's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          神经工程概论-课程笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-17 10:53:13" itemprop="dateCreated datePublished" datetime="2020-02-17T10:53:13+08:00">2020-02-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-09-14 21:57:40" itemprop="dateModified" datetime="2025-09-14T21:57:40+08:00">2025-09-14</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>神经工程概论，使用的教材是brain facts.</p>
+<h2 id=""><a href="#" class="headerlink" title=" "></a><span id="more"></span> </h2><h4 id="Lecture-1"><a href="#Lecture-1" class="headerlink" title="Lecture-1"></a>Lecture-1</h4><p>2020年2月17日10:53:45</p>
+<p>神经调制技术<br>Deep Brain Stimulation<br>描述：<br>电极植入到指定的靶点，治疗帕金斯有非常好的疗效。</p>
+<p>脊髓表面刺激，让瘫痪病人走起来。基本原理：在脊髓表面施加时空的刺激，让瘫痪患者以特定的步态pattern走起来。</p>
+<p>假体：耳蜗、视觉假体。<br>功能电刺激，主要刺激肌肉，来缓解某一类的疾病。<br>什么是神经工程：包含的范围特别广。</p>
+<p>51个学时。</p>
+<p>光学，电学，磁学的手段来研究。<br>分为三大块：</p>
+<ol>
+<li>介绍神经工程，包含一些基本的概念；介绍解破学的相关内容；</li>
+<li>介绍monitoring和stimulating neural activity的一些技术；【很关心这一部分的内容】</li>
+<li>Devices for replacing or restoring neural function</li>
+</ol>
+<p>课程考核<br>20%—-&gt;出勤<br>40%—-&gt;文献讲解：每位同学选一篇文献。(系统性的)讲25-30分钟左右，。录下来，传到教学网上。<br>40%—-&gt;final reports【根据每个人的兴趣，给大家制定一个topic，做一些文献的综述，写一个报告】</p>
+<p>3月16号是第一次的文献讨论</p>
+<p>神经生物学的一些基本内容<br>神经元：数量，人大约有10^12个，形态差异巨大3-155um，结构包括胞体（soma）和突起（neurites），神经元的突起包括树突（dendrite）和轴突（axon）<br>椎体神经元，大概在皮层4,5层中。<br>静息电位：胞内的电位-胞外的电位。<br>为什么会有膜电位呢？<br>根本原因是：细胞膜对粒子是具有选择性通透；同时细胞膜内外的离子浓度是不相等的，但是又不能自由地扩散，正负离子的通透性是不一样的，这样就会建立一个平衡，建立一个电位，在这个电位下，离子浓度导致的扩散和电场导致的扩散是相等的，就会出现一个这样的静息电位。</p>
+<p>可以通过Goldman方程来计算静息电位。</p>
+<p>离子通道，Ion Channel</p>
+<ol>
+<li>对不同的离子有选择性的</li>
+<li>有开启和关闭两种状态</li>
+<li>这种状态会受，电、化学、机械信号的控制</li>
+<li>不应期，再这样的时间下，怎么刺激都不激活</li>
+</ol>
+<p>离子泵：把离子从低浓度搞到高浓度</p>
+<p>The Action Potential</p>
+<ol>
+<li>-55mV 是Na+开启的阈值电压。开启之后，Na+开始内流，进行去极化，达到30mV时，K+通道打开，K+外流，进行再极化</li>
+<li>时间尺度上有1ms。firing</li>
+</ol>
+<p>突触分为两类：化学突触（0.5-2ms，单向传递）-中枢，更加高级、电学突触(基本不需要时间，双向传递)：比如心脏中</p>
+<p>突触后电位【分级应答，配级门控，在时间和空间上可以加和】，动作电位【全或无现象】</p>
+<p>神经递质-Neurotransmitters in CNS小结，比如多巴胺，比如帕金斯病，就是多巴胺分泌不足。</p>
+<p>不同种类的神经元：model neuron、sensory neuron、Motor Neuro、Local Interneuro、Projection interNeuro、Neuroendocrine Cell</p>
+<p>胶质细胞：Glial Cells：oligodendrocyte、Schwann Cell、Astrocyte<br>目前的研究发现，Glial Cell的功能非常多。</p>
+<hr>
+<h4 id="Lecture-2"><a href="#Lecture-2" class="headerlink" title="Lecture-2"></a>Lecture-2</h4><p>2020年2月24日15:09:04</p>
+<p>Nervous System</p>
+<ul>
+<li><p>中枢神经系统（Central nervous system,CNS）包含脑（Brain）和脊髓（Spinal Cord）.<br>大脑：包含脊髓（Spinal Cord）、小脑（cerebellum）、脑干（Brain Stem）、<br>间脑（diencephalon）、端脑（telencephalon）</p>
+</li>
+<li><p>周围神经系统（peripheral nervous system,PNS）<br>分类：<br>与中枢连接的部位：脑神经（cranial nervous）——用来支配头面部的运动和感觉、脊神经（spinal nervous）——</p>
+</li>
+</ul>
+<p>根据分不到机体的部位：Somatic n.、Visceral n.</p>
+<p>根据神经冲动传导方向：传入神经sensory n，传出神经（运动神经）motor n</p>
+<p>神经系统可以分为：神经元（Neuro）和神经胶质细胞（glial cell）</p>
+<p>神经元的分类：Bipolar neuron、Unipolar neuro、Multipolar neuron</p>
+<p>Neron，包含Cell Body、Process(包含 dendrite树突和axon轴突)</p>
+<p>glial cell有很多种类。</p>
+<center>Terms in NeruoScinece</center>
+
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>CNS</th>
+<th>PNS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cell Body &amp; Dendrites of Neuros</td>
+<td>Grey Mater &amp; Cortex 灰质/皮质  Nucleus神经核</td>
+<td>Ganglions 神经节</td>
+</tr>
+<tr>
+<td>Axon of neurons</td>
+<td>White Matter &amp; Medulla 白质/髓质 Tracts纤维束</td>
+<td>Nerves</td>
+</tr>
+<tr>
+<td></td>
+<td>Reticular formation 网状结构</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>端脑</p>
+<p>大脑皮层：<br>原皮质（archicortex）：海马和齿状回，神经元排列成3层<br>旧皮质（paleocortex）：嗅球，神经元排列成3层<br>新皮质（neocortex）：占据大脑皮质的绝大多数；神经元排列为6层，皮质的不同部位6层结构不同；</p>
+<p>Brodmann脑分区 1909年，52个脑分区。</p>
+<p>优势半球：左右半球发育呈不对称，各有优势。左侧半球以语言、意识、数学分析活动为主；右侧半球以非语言信息，如音乐、图形、时空概念为主。</p>
+<p>大脑半球的髓质包括，联合纤维commissural fiber，连接左右大脑半球（胼胝体、前连和、穹隆）；联络纤维association fiber，大脑半球内（钩束、上纵束、扣带）；投射纤维projection fiber，上下行纤维（内囊）</p>
+<hr>
+<h4 id="Lecture-3"><a href="#Lecture-3" class="headerlink" title="Lecture-3"></a>Lecture-3</h4><p>2020年3月2日<br>间脑，包括：背部丘脑（thalamus）、下丘脑（hypothalamus）、上丘脑（epithalamus）、后丘脑（metathalamus）、底丘脑（subthalamus）</p>
+<blockquote>
+<p>我的问题：老师，背侧丘脑内部的Y形内髓板（白色的结构）的构成是什么呀，是神经元的轴突组成的吗？<br>老师：可以这么理解，是白质，也就是神经纤维束，就是神经元的轴突。</p>
+<p>明白了，谢谢老师。还有一个问题，丘脑内部核团包含了很多子核群，这些核群划分的依据是什么呢？是根据解破学结构，还是根据功能<br>首先是通过解剖学染色，发现里面的细胞一堆堆的，就每一小堆按照其位置命名一个名字。然后再研究其功能。大概是这个意思。也符合人类的认知过程，先结构再功能<br>我明白了，也就是说：在解剖学染色的过程中，每一小堆会被染成不同的颜色，我们根据颜色以及相应的空间位置对不同的小堆进行了命名</p>
+</blockquote>
+<p>脊髓的内部结构<br>周围神经系统</p>
+<p>脑神经<br>脑神经的7种纤维成分</p>
+<p>内脏神经系统</p>
+<h4 id="Lecture-4"><a href="#Lecture-4" class="headerlink" title="Lecture-4"></a>Lecture-4</h4><p>2020年3月9日<br>神经成像和记录手段</p>
+<ul>
+<li>Electrical and Magnetic<ul>
+<li>Intracellular recording</li>
+<li>Extracellular recording</li>
+<li>EEG/MEG</li>
+</ul>
+</li>
+<li>Metabolic(Chemical)<ul>
+<li>MRI/functional MRI</li>
+<li>PET(Positron Emission Tomoraphy)</li>
+<li>Funcional Near Infrared</li>
+</ul>
+</li>
+<li>Optical<ul>
+<li>Intrinsic optical imaging</li>
+<li>Voltage-sensitive dying</li>
+<li>Two photon microscopy</li>
+</ul>
+</li>
+</ul>
+<p>时空分辨率与创伤<br>Figure from “Neurophysiology” by Carpenter.<br>电学的方法优点非常明显：能够记录的时间、空间分辨率都很高，但是缺点是是记录的范围有限。<br>光学的优点是：它对细胞有选择性（specificity）、能看到单细胞水平，缺点是：只能看比较浅的部位。</p>
+<blockquote>
+<p>老师向您请教：这张图中的TMS、Classical histology、2DG和Lesions分别代表的是什么呀，为什么他们也都对应的有时间和空间分辨率，看样子它们好像不是具体的成像手段？<br>老师：TMS 应该是 经颅磁刺激。</p>
+</blockquote>
+<p>有几类的神经信号：静息电位（resting potential）、动作电位（action potential）——高频的交流信号，突触后电位(Postsynaptic potential)——非常慢的信号，频率很低，Field Potential，很多神经细胞，集体的活动，同步活动，累加的一个信号，非常常用的一个信号。这些电信号都是，包内相对于包外的电势差。</p>
+<p>心肌细胞的动作电位时长能够持续很长，能够持续几十毫秒。胞内记录的形状和胞外的形状差异很大。胞内信号和胞外信号之间的差距。总结：胞外电极记录到的信息少了，一些低频的信号在胞内能够记录到，但是胞外记录不到。</p>
+<p>接下讲的是Patch Clamp，膜片钳技术——神经电生理领域中金标准技术（获得诺贝尔奖的技术），参考电位是放置在溶液中的银电极。吸入了一个离子通道。研究离子通道的一个有力工具。很多神经学的药物都是作用到离子通道上的。关键技术是不能漏电，同时不能把细胞戳破。多位点平行测量很多很高。它还有一个limitation是，对细胞的损伤非常大。</p>
+<p>MEA，金属微电极阵列（Multi-electrode array），不能记录胞内的电位，但是能够做多位点平行测量（胞外），对细胞的损伤很小。这种技术的应用占大多数。<br>对MEA来说，有两个关键：第一个是电极的阻抗(尽可能地降低electrode impedance)，第二个是尽可能的增加sealing resistance。粗糙化，是的记录位点变得粗糙，能够更加真实地反映记录位点的电信号，同时能够降低接触位点的电阻抗。电极位点，最小的是5微米。电极阻抗过高，会导致我们丧失信号。</p>
+<p>场效应晶体管FETs。</p>
+<p>硅纳米线。诱导神经元生长的方向。</p>
+<p>总的来说，老师讲了若干探针的制备方法。</p>
+<blockquote>
+<p>请问大量细胞同步活动的postsynaptic potential可以在胞外被探测吗？（其他同学）<br>老师：postsynaptic potential分为excitatory postsynaptic potential (EPSP)和inhibitory postsynaptic potentials (IPSPs)；个人认为兴奋性的突触后电位如果幅值够大产生了动作电位的话应该会比较容易记录，如果没产生动作电位的话，电极位置的放置会显得比较关键（不能在细胞膜上大范围传播），离突触后膜比较近应该能记录的到吧</p>
+</blockquote>
+<p>离子荧光蛋白的尺寸是4nm，而这一页的探针尖峰的尺寸是10nm，所以探针的损伤是很小的，</p>
+<p>老师想到了一个非常奇妙的方法，用磷脂双分子层来修饰探针，这个封接是非常紧密的，没有任何缝隙。即使有微小的移动，仍然不会破坏这个封接。封接非常stable的。——该方法不会破坏细胞膜的结构。BIT-FET电极。</p>
+<p>膜片钳，不能重复记录，一般几分钟，十几分钟就死亡了。</p>
+<blockquote>
+<p>老师，向BIT-FETs电极尖端附着一层磷脂双分子层的想法非常绝妙，一定程度上避免了对细胞的损伤。但是我不太清楚，这种技术的难度如何，是不是也非常大呢？<br>磷脂双层膜在固体表面的组装是自发的，保证表面清洁，温度在磷脂双层膜分子玻璃化温度之上的话，是一个自组装过程。</p>
+</blockquote>
+<p>组织工程。</p>
+<h4 id="Lecture-5"><a href="#Lecture-5" class="headerlink" title="Lecture-5"></a>Lecture-5</h4><p>2020年3月16日</p>
+<blockquote>
+<p>关于神经元，一些基本的概念，在一平方厘米中，有15million的神经元，100billion的突触<br>人脑中约有86 billion的神经元</p>
+</blockquote>
+<p>活体神经信号记录特点：<br>（1）在体植入电极处于复杂的生理环境，这种生理环境不仅包括复杂的生化环境，如体液、有机大分子、酶、自由基等，还包括活体组织对外来植入物的机体防御性对答反应，即炎症反应。事实上已有研究证明，大脑对植入电极的炎症反应是导致检测不能长期稳定进行、并限制在体检测应用的主要原因之一；<br>（2）由于活体动物呼吸和运动等因素的影响，在体植入电极处于一种不断的机械振动或机械运动环境中，由于这种振动，电极/神经元界面可能会不稳定，信号的来源也会随时间变化，从而影响神经信号的检测，并给活体组织带来较大的破坏；<br>（3）与体外检测可以采用的在电极上直接原位培养细胞不同，在体检测需要将电极机械植入到活体大脑中，这个植入过程会给大脑组织带来一定程度的损伤，并对检测产生影响。<br>（4） 在体记录对象为完整的神经网络，信号类型也与体外记录不同。</p>
+<p>以上这些特点决定了在设计在体植入检测电极时，需要有与体外检测不同的考虑。</p>
+<p>对大脑的信号记录，分为三大类：（1）EEG；（2）ECoG，放在颅骨下边，大脑上边（3）LFP 、Spike<br>侵入性不断增强；<br>频率范围不断变宽。</p>
+<p>深度电极（Depth electrodes）：  </p>
+<ul>
+<li>SUA(Single unit activity)</li>
+<li>MUA(Multiple unit activity)</li>
+<li>LFP(Local field potential</li>
+</ul>
+<p>Cortical surface electrodes</p>
+<ul>
+<li>ECoG(Electro cortico graphy)</li>
+</ul>
+<p>External</p>
+<ul>
+<li>EEG</li>
+<li>MEG Magneto encephalo graphy</li>
+<li>fMRI</li>
+</ul>
+<p>Muslce</p>
+<ul>
+<li>Electromy ogram</li>
+<li>Nerve cuff</li>
+</ul>
+<p>胞内信号的反映，是终期的反映。胞外信号，只能记录到动作电位是不是发生了；Axon里边的动作电位。</p>
+<p>如何对活体的细胞进行观测？膜片钳——空间和时间的分辨率非常高。膜片钳需要显微镜辅助（提前打好病毒）、开颅  </p>
+<p>一个spike对应一次放电；</p>
+<p>进行spike测量的时候，采样频率要到30KHz</p>
+<p>Tetrode电极，优点是，能backup，一个电极坏了， 还有备份电极用；</p>
+<p>Michigan electrode，实现不同深度的测量。</p>
+<p>Silicon-Based Microelectrode Arrays</p>
+<p>NeuroPixel——非常厉害的电极，一根针，1000多个位点。排着队在买</p>
+<p>Utah array，这个电极被FDA批准了。</p>
+<p>炎症反应，导致了采集到的信号不稳定</p>
+<p>胶质疤痕会包裹神经元</p>
+<p>如何减少炎症反应？</p>
+<ol>
+<li>特殊电极的设计——柔性电极；</li>
+<li>电极尽可能的小；</li>
+<li>使用生化的方法对电极进行修饰；</li>
+</ol>
+<p>柔性电极——电极也能像液体一样注射到大脑中</p>
+<p>目前记录千级别的神经元；</p>
+<p>百万级别神经元是我们的目标。</p>
+<p>什么是Field Potential？Field Potential 观察到的是大量同步电信号的变化</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/16/%E7%AC%94%E8%AE%B0(%E5%8F%B6%E4%B8%99%E6%88%90)-%E6%A6%82%E7%8E%87%E4%B8%8E%E7%BB%9F%E8%AE%A1/" rel="prev" title="概率与统计的原理-课程笔记">
+      <i class="fa fa-chevron-left"></i> 概率与统计的原理-课程笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/17/%E7%AC%94%E8%AE%B0(%E5%91%A8%E9%93%81)-%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E4%B8%AD%E7%9A%84%E5%8F%8D%E9%97%AE%E9%A2%98/" rel="next" title="数学物理中的反问题-课程笔记">
+      数学物理中的反问题-课程笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"> </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Lecture-1"><span class="nav-number">1.0.1.</span> <span class="nav-text">Lecture-1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lecture-2"><span class="nav-number">1.0.2.</span> <span class="nav-text">Lecture-2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lecture-3"><span class="nav-number">1.0.3.</span> <span class="nav-text">Lecture-3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lecture-4"><span class="nav-number">1.0.4.</span> <span class="nav-text">Lecture-4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lecture-5"><span class="nav-number">1.0.5.</span> <span class="nav-text">Lecture-5</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Feng Zhiheng"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Feng Zhiheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feng Zhiheng</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">239k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:38</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

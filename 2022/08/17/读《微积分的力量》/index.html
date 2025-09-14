@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fengzhiheng.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="费曼说道：“你最好学学微积分，它是上帝的语言。”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读《微积分的力量》">
+<meta property="og:url" content="https://fengzhiheng.github.io/2022/08/17/%E8%AF%BB%E3%80%8A%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E5%8A%9B%E9%87%8F%E3%80%8B/index.html">
+<meta property="og:site_name" content="Feng Zhiheng&#39;s Blog">
+<meta property="og:description" content="费曼说道：“你最好学学微积分，它是上帝的语言。”">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-17T08:12:27.000Z">
+<meta property="article:modified_time" content="2025-09-14T13:57:40.008Z">
+<meta property="article:author" content="Feng Zhiheng">
+<meta property="article:tag" content="生活">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fengzhiheng.github.io/2022/08/17/%E8%AF%BB%E3%80%8A%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E5%8A%9B%E9%87%8F%E3%80%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>读《微积分的力量》 | Feng Zhiheng's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Feng Zhiheng's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">      
+      
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">      
+      
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">      
+      
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fengzhiheng.github.io/2022/08/17/%E8%AF%BB%E3%80%8A%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E5%8A%9B%E9%87%8F%E3%80%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Feng Zhiheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Feng Zhiheng's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          读《微积分的力量》
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-17 16:12:27" itemprop="dateCreated datePublished" datetime="2022-08-17T16:12:27+08:00">2022-08-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-09-14 21:57:40" itemprop="dateModified" datetime="2025-09-14T21:57:40+08:00">2025-09-14</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>费曼说道：“你最好学学微积分，它是上帝的语言。”</p>
+<span id="more"></span> 
+<p>总的来说，学习微积分前如果能先读一读这本书的话，会很清楚地理解到《微积分》的重要意义。同时还会搞清楚微积分的发展历史：伽利略、牛顿、莱布尼兹、等一系列在初中、高中课本上出现的人物对微积分的发展具体做出过哪些贡献。但是，书中对很多领域的介绍，有些泛泛。拿来做科普读物是好的，但是想基于这本书对某个领域有深入的了解，可能会失望。</p>
+<hr>
+<p>◆ 引言</p>
+<blockquote>
+<blockquote>
+<p>人类在不经意间发现了这种奇怪的语言（先是在几何学的隐秘角落里，后来是在宇宙密码中），然后学会熟练地运用它，并破译了它的习语和微妙之处，最终利用它的预测能力去重构世界。</p>
+<p>微积分是人类最具启迪性的集体成就之一。</p>
+</blockquote>
+</blockquote>
+<p>◆ 第1章 无穷的故事</p>
+<blockquote>
+<blockquote>
+<p>当我们凝视圆的时候，圆实际上也在注视着我们。</p>
+</blockquote>
+</blockquote>
+<p>◆ 除数为0的禁忌</p>
+<blockquote>
+<blockquote>
+<p>这个问题的根源是无穷。除数为0会召唤出无穷，据说这和用通灵板从另一个世界召唤出灵魂的方式差不多。真是太危险了，千万别去尝试。</p>
+</blockquote>
+</blockquote>
+<p>◆ 实无穷之罪</p>
+<blockquote>
+<blockquote>
+<p>无穷诞生了，它是我们心灵深处、无底噩梦和永生愿望中的某些东西的数字对应物。</p>
+</blockquote>
+</blockquote>
+<p>◆ 芝诺悖论走向数字化</p>
+<blockquote>
+<blockquote>
+<p>在微积分的理想世界里，我们还可以更上一层楼。任何连续的事物都可以被精确地（而不只是近似地）切分成无穷多个无穷小的部分</p>
+</blockquote>
+</blockquote>
+<p>◆ 伽利略出场</p>
+<blockquote>
+<blockquote>
+<p>他们一直没有结婚，因为玛丽娜很年轻，而且社会地位很低，和她结婚对伽利略来说是件有损名誉的事情</p>
+</blockquote>
+</blockquote>
+<p>◆ 从摆动的吊灯到GPS</p>
+<blockquote>
+<blockquote>
+<p>数学领域，钟摆摆动带来的谜题刺激了微积分的发展。在物理学和工程学领域，钟摆摆动变成了振动的范式。</p>
+<p>在接近绝对零度的温度条件下，成对的超导电子可以来回隧穿一道难以穿透的绝缘屏障。根据经典物理学，这是一种荒谬的说法。不过，微积分和量子力学把这种钟摆样振动召唤到现实中，或者换一种不那么神秘的说法就是，它们揭示了发生这种现象的可能性。</p>
+</blockquote>
+</blockquote>
+<p>◆ 费马vs笛卡儿</p>
+<p>学阀自古以来便有之，有人的地方就有江湖。</p>
+<blockquote>
+<blockquote>
+<p>即使到了今天，学生们仍然在学习笛卡儿坐标，尽管它是费马率先提出来的。</p>
+</blockquote>
+</blockquote>
+<p>◆ 最短时间原理</p>
+<blockquote>
+<blockquote>
+<p>费马预感到光被优化了，沿阻力最小的路径传播。</p>
+<p>最短时间原理后来被广义化为最小作用量原理。</p>
+</blockquote>
+</blockquote>
+<p>◆ 函数的作用</p>
+<blockquote>
+<blockquote>
+<p>上升、下降或上下起伏。换句话说，就是成长、衰退或波动。</p>
+</blockquote>
+</blockquote>
+<p>◆ 对数</p>
+<blockquote>
+<blockquote>
+<p>撤销另一种工具的作用。具体来说，就是对数撤销了指数函数的作用，反之亦然。</p>
+</blockquote>
+</blockquote>
+<p>◆ 第7章 隐秘的源泉</p>
+<blockquote>
+<blockquote>
+<p>牛顿患有膀胱结石，而莱布尼茨患有肾结石。</p>
+</blockquote>
+</blockquote>
+<p>◆ 面积、积分和基本定理</p>
+<blockquote>
+<blockquote>
+<p>“你难道不感激水吗？”另一条鱼反问道：“水是什么？”，学习微积分的学生一直浸淫在基本定理中，所以他们视其为理所当然。</p>
+</blockquote>
+</blockquote>
+<p>◆ 私密的微积分</p>
+<blockquote>
+<blockquote>
+<p>黑死病（腺鼠疫）传入伦敦后，一周之内就夺走了数百人的生命，之后又杀死了数千人。</p>
+<p>但是，发明现代微积分还不足以占据他的整个大脑。他发现了引力平方反比律并将其应用于月球，他发明了反射望远镜，他通过实验证明白光是由彩虹的7种颜色组成的。那时牛顿还不到25岁，他后来回忆道，“在那些日子里，我处于发明的全盛期，对数学和哲学的关注程度超过此后的任何时间。</p>
+<p>莱布尼茨身形瘦削，弯腰驼背，面色苍白，尽管他外表平平，但智力超群。在包括笛卡儿、伽利略、牛顿和巴赫在内的世纪天才中，他是最全能的一位。</p>
+</blockquote>
+</blockquote>
+<p>◆ 在微积分的帮助下对抗HIV</p>
+<blockquote>
+<blockquote>
+<p>而免疫系统清除病毒的过程则像水槽向外排水一样。</p>
+<p>病毒的产生和它们被免疫系统清除之间显然存在着一种平衡状态。</p>
+<p>每一天，免疫系统都会清除10亿个病毒颗粒，而被感染的细胞则会释放出10亿个新的病毒颗粒。免疫系统全力以赴地和病毒展开了激烈的较量，战争似乎进入了胶着状态。</p>
+</blockquote>
+</blockquote>
+<p>◆ 自然的逻辑</p>
+<blockquote>
+<blockquote>
+<p>对我来说，这是牛顿最伟大的遗产，他证明了自然是合乎逻辑的。</p>
+</blockquote>
+</blockquote>
+<p>◆ 常微分方程与偏微分方程</p>
+<blockquote>
+<blockquote>
+<p>这个常微分方程决定了在下一个无穷小的时间增量中，行星位置会发生多大的改变。</p>
+<p>某个因素的无穷小的变化（比如无穷小的时间增量）如何引起其他因素（比如行星的位置和病毒颗粒的浓度）的无穷小的变化</p>
+<p>称为“常”微分方程，是因为它们只有一个自变量。</p>
+</blockquote>
+</blockquote>
+<p>◆ 第10章 波、微波炉和脑成像</p>
+<blockquote>
+<blockquote>
+<p>傅里叶10岁时就成了孤儿，十几岁时体弱多病，患有消化不良和哮喘。成年之后，他认为热量对健康来说至关重要。即使在夏天，他也会待在过热的房间里，并裹上一件厚大衣。在他的科学生涯的各个方面，傅里叶都专注和痴迷于热。</p>
+</blockquote>
+</blockquote>
+<p>◆ 弦理论</p>
+<blockquote>
+<blockquote>
+<p>为了发出准确的音高，我们可以敲击一个振动频率被设定为440个周期/秒的音叉。</p>
+</blockquote>
+</blockquote>
+<p>◆ 最值得尊崇的勇气</p>
+<blockquote>
+<blockquote>
+<p>伟大的拉格朗日——注意到以往学业表现糟糕的勒布朗先生的成绩有了显著进步。拉格朗日要求和勒布朗见面，由此发现了热尔曼的真实身份，又惊又喜的拉格朗日收下了这个女学生。</p>
+</blockquote>
+</blockquote>
+<p>◆ 非线性</p>
+<blockquote>
+<blockquote>
+<p>当系统的各个部分互相干扰、合作或竞争时，就会发生非线性的相互作用。</p>
+</blockquote>
+</blockquote>
+<p>◆ 混沌</p>
+<blockquote>
+<blockquote>
+<p>但他发现了更重要的现象，我们现在称之为混沌。</p>
+<p>混沌系统是非常讲究细节的，即使是开始方式的小小改变，也会产生大不相同的结果，这是因为初始条件的小变化会以指数方式放大。任何微小的误差或扰动都会像滚雪球一样迅速增大，以至于从长远看，这个系统会变得不可预测。混沌系统不是随机的，而是确定的，因此短期来看它们是可预测的。但长期来看，它们对微小的扰动十分敏感，以至于在许多方面实际上都是随机的。</p>
+</blockquote>
+</blockquote>
+<p>◆ 点评</p>
+<blockquote>
+<blockquote>
+<p>这篇文章的致谢写的很不错，除了罗列出了需要致谢谁，还说清楚了为什么要谢谢他。</p>
+</blockquote>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag"># 生活</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/06/%E8%AF%BB%E3%80%8A%E5%BD%93%E5%91%BC%E5%90%B8%E5%8C%96%E4%B8%BA%E7%A9%BA%E6%B0%94%E3%80%8B/" rel="prev" title="读《当呼吸化为空气》">
+      <i class="fa fa-chevron-left"></i> 读《当呼吸化为空气》
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/27/%E8%AF%BB%E3%80%8A%E6%B3%95%E6%B2%BB%E7%9A%84%E7%BB%86%E8%8A%82%E3%80%8B/" rel="next" title="读《法治的细节》">
+      读《法治的细节》 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Feng Zhiheng"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Feng Zhiheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feng Zhiheng</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">239k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:38</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

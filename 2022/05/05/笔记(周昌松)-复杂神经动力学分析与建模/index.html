@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fengzhiheng.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="复杂神经动力学：分析与建模—从神经元脉冲到皮层震荡，从涌现到功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="复杂神经动力学分析与建模-讲座收获">
+<meta property="og:url" content="https://fengzhiheng.github.io/2022/05/05/%E7%AC%94%E8%AE%B0(%E5%91%A8%E6%98%8C%E6%9D%BE)-%E5%A4%8D%E6%9D%82%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90%E4%B8%8E%E5%BB%BA%E6%A8%A1/index.html">
+<meta property="og:site_name" content="Feng Zhiheng&#39;s Blog">
+<meta property="og:description" content="复杂神经动力学：分析与建模—从神经元脉冲到皮层震荡，从涌现到功能">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/33463223.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/53126396.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/3782956.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/1678311.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/90446582.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/41104638.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/4517711.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/3648528.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/7244475.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/12111644.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/24964811.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/14218771.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/6687732.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/87347719.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/89647115.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/96731886.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/14128651.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/79677761.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/32532867.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/449271.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/86932987.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/42299684.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/98179939.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/78279308.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/58479483.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/86658793.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/81812281.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/20551696.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/57212859.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/45372031.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/55745451.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/15378866.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/21601457.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/14596393.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/60881525.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/90004197.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/11349432.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/32971294.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/37271572.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/88373350.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/11922963.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/56919329.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/89077584.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/2394443.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/6796395.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/68966992.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/48044632.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/64341860.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/4865572.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/11444374.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/60627884.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/45018577.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/41435676.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/28458754.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/32082491.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/86509403.png">
+<meta property="og:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/15598507.png">
+<meta property="article:published_time" content="2022-05-05T11:47:03.000Z">
+<meta property="article:modified_time" content="2025-09-14T13:57:40.005Z">
+<meta property="article:author" content="Feng Zhiheng">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/33463223.png">
+
+<link rel="canonical" href="https://fengzhiheng.github.io/2022/05/05/%E7%AC%94%E8%AE%B0(%E5%91%A8%E6%98%8C%E6%9D%BE)-%E5%A4%8D%E6%9D%82%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90%E4%B8%8E%E5%BB%BA%E6%A8%A1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>复杂神经动力学分析与建模-讲座收获 | Feng Zhiheng's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Feng Zhiheng's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">      
+      
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">      
+      
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">      
+      
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fengzhiheng.github.io/2022/05/05/%E7%AC%94%E8%AE%B0(%E5%91%A8%E6%98%8C%E6%9D%BE)-%E5%A4%8D%E6%9D%82%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90%E4%B8%8E%E5%BB%BA%E6%A8%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Feng Zhiheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Feng Zhiheng's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          复杂神经动力学分析与建模-讲座收获
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-05 19:47:03" itemprop="dateCreated datePublished" datetime="2022-05-05T19:47:03+08:00">2022-05-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-09-14 21:57:40" itemprop="dateModified" datetime="2025-09-14T21:57:40+08:00">2025-09-14</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>复杂神经动力学：分析与建模—从神经元脉冲到皮层震荡，从涌现到功能</p>
+<span id="more"></span> 
+<p>讲座的视频来源：</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mu411y7M4/?spm_id_from=333.788">https://www.bilibili.com/video/BV1mu411y7M4/?spm_id_from=333.788</a></p>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p>1、介绍：大脑作为多尺度复杂动态网络和功能系统；成本效益平衡；建模简介（Introduction: brain as multi-scale complex dynamical network and functional system; cost-efficiency trade-off; a brief overview of modeling）</p>
+<p>从复杂系统的视角，把神经系统突出的结构和动力学特征做一个介绍。希望强调神经系统除了作为复杂系统外，还是功能系统，需要考虑成本和效益的均衡；然后对神经系统的建模做一个简要的综述；</p>
+<hr>
+<p>2、在神经网络模型和平均场分析中协调不规则的神经元尖峰，神经雪崩和振荡（Reconcile irregular neuronal spiking, neural avalanches and oscilations in neural network model and mean-field analysis）</p>
+<p>介绍单个神经元脉冲发放的动力学 和 神经回路出现的震荡、雪崩现象。怎么统一起来？用模型的研究方法，和 统计中平均场的方法 理解 <strong>涌现</strong> 的原理。</p>
+<hr>
+<p>3、少即是多:神经回路动力学的成本效益（less is more:cost-effectiveness in neural circuit dynamics）</p>
+<p>这样的动力学本质，实际上也满足了生物神经系统中 低成本来实现高效率的原理。</p>
+<hr>
+<p>4、信息处理中的复杂神经动力学-学习和记忆补救（Complex neural dynamics in information processing- learning and memory rescue）</p>
+<p>复杂的神经动力学，在局部的复杂网络中；结合外界的刺激、神经可塑性。来了解神经动力学，对信息处理（学习和记忆）的作用</p>
+<hr>
+<p>5、在意识恢复过程中复杂的皮层波的传播（complex cortical propagation waves during the recovery of consciousness）</p>
+<p>在皮层大尺度的框架下，了解神经动力学，在空间中表现出来波的传播。小鼠从麻醉到清醒的过程中，动力学特征的变化。可以用一些神经场的模型，来了解局部动力学（如连接的相互作用），为理解意识的恢复有一定的帮助。</p>
+<hr>
+<p>6、大规模功能连接:层级模块化组织、多样性、平衡性和认知能力（Large-scale functional connectivity : hierarchical modular organization, diversity, balance and cognitive ability）</p>
+<p>进入更大的尺度，人类大脑全脑的功能连接，结构连接，体现出来，大脑多层次、模块化的结构、跟功能的分离和整合。</p>
+<p>大脑结构和功能的连接，体现出来的多层次模块化结构来支撑我们的大脑实现：记忆、功能、个体差异、认知能力的差别。</p>
+<hr>
+<p>7、Model of neural computing from machine learning（机器学习的神经计算模型）</p>
+<p>通过机器学习来构建模型，来实现动物上类似的的功能。还可以反过来，通过分析模型里边的结构和动力学 来理解生物系统底层实现计算的原理</p>
+<hr>
+<p>8、总结（Summary and Outlooks）  和展望</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/33463223.png" alt=""></p>
+<p>收获 &amp; 思考：</p>
+<h3 id="背景介绍："><a href="#背景介绍：" class="headerlink" title="背景介绍："></a>背景介绍：</h3><p>1、神经元，在小尺度上会形成局部的回路，如下图</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/53126396.png" alt=""></p>
+<p>2、在大尺度上，还会形成皮层柱，如下图：</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/3782956.png" alt=""></p>
+<p>3、神经元局部的回路在大尺度上看就是 大脑中的绘制。而轴突而是白质，类似与大脑中的高速公路，如下图</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/1678311.png" alt=""></p>
+<p>4、成年人大脑中大概有860亿神经元。每个神经元有成千上万个突触。大脑占2%的体重，但是消耗人体的20%的能量（~20W左右）。非常高效的组织；</p>
+<p>5、大脑背后的复杂系统跨越了多个空间和时间尺度：时间上，还包括了毫秒级别的分子动力学； </p>
+<p>6、动物相比人来说，可以进行有创的成像；</p>
+<p>7、大脑最大的特点是，大脑一直有自发的活动；</p>
+<p>8、有一种说法：这种复杂的自发动力学，消耗了大脑大概95%的能量；引出来一个问题：伴随着生物进化，为什么大脑要花费这么多能量在这种动力学行为上，这些行为好像又没有直接进行处理过程。反过来讲，这种复杂的动力学行为，一定有很重要的价值和意义；</p>
+<p>9、这种大脑自发的动力学行为，随着我们衰老、成长、甚至脑部疾病 会发生变化；</p>
+<p>10、消耗了这么多能量，有很多代谢物质，这种代谢物质的堆积跟大脑很多的退行性病变都是息息相关的；</p>
+<p>11、发育的过程中，随着大脑的复杂性发生变化时，人们的行为和认知也会发生变化；人青壮年的时候，神经系统的复杂性是最高的，同时人的能力也是最高的；</p>
+<p>12、可以利用信息论中，熵的概念来刻画复杂性。很多生物信号，如果你用不同尺度的时间窗进行平均，你还是能看到它是在几个不同状态下连续波动的；这属于多尺度熵；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/90446582.png" alt=""></p>
+<p>13、长久以来，研究者们往往把神经元的复杂性当做随机和噪声。ERP（event related potential）这种分析方法在某种程度上是为了降低信号的复杂性（即研究者眼中的噪声）；实际上，我们要勇敢一些，面对复杂性、探索和利用复杂性！</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/41104638.png" alt=""></p>
+<p>14、神经元的电活动，是一个非常典型的非线性活动：</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/4517711.png" alt=""></p>
+<p>15、大脑不均匀、模块化、多层次的连接非常多；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/3648528.png" alt=""></p>
+<p>16、复杂系统在物理科学中有着基本的特征：组成单元有着非常强的非线性、有很多单元耦合起来；出现：混沌、自组织（Self-Organized Criticality, SOC）、涌现（emergence）这些行为；只观察单个单元，很难理解整个集群的行为； 迫切要求我们在系统层面观察、了解神经系统。</p>
+<p>17、神经动力学在不同尺度上的一些突出的特征：（1）单个神经元层面：低发放率、无规则；（2）集群层面：簇放电（cluster firing）/神经元雪崩现象（neuronal avalanches）、网络震荡（非周期、多时间尺度）、皮层上波的传播；</p>
+<p>18、特定任务下，神经元的发放是不重复的；</p>
+<p>19、神经元的发放间隔服从泊松分布，意味着随机过程；</p>
+<p>20、为什么会出现这种无规则的发放？（模型问题、理论问题为什么如此重要？）  引出，“平衡问题”的重要性！</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/7244475.png" alt=""></p>
+<p>21、模型：每个神经元接收激活和抑制信号。如果两者相当，则神经元表现出无规则的随机信号特征。当两方其中一方实力过大时，超过神经元发放的阈值，进而导致神经元产生随机的发放；</p>
+<p>22、Ising 模型：神经元网络是稀疏连接的（为什么要稀疏？稀疏之后，两个神经元没有相同的邻居，那么他们的输入是独立的；神经元之间相对是独立的；）、低发放率的。</p>
+<p>23、E-I balance模型（神经元之间相互独立），能够实现：网络的发放率随着刺激的强弱呈现线性变化。而且平衡的时候，属于线性变化；线性模型没有太大意义，就像照镜子一样，没有新的东西。但这种模型在构建的时候用到了热力学极限，代价是很大的。</p>
+<p>24、神经系统中的神经元，通过什么样的形式 group在一起呢？社会中的人， 有独立性、分工、合作。</p>
+<p>25、两个神经元的电流，有相差，有时间窗。</p>
+<p>26、 通过大尺度的成像方法， 你会发现神经元的发放并不是完全随机的；存在同步发放的结构，也叫做cluster。统计cluster 发放的概率，你会发现并不低；shuffle后的神经元，这种同步发放的概率非常低；</p>
+<p>27、领域内一般认为，神经元对之间的相关性（对相关 pairse-correlation）超过0.3，才存在连接，如果只有0.01这种水平，就认为没有连接；</p>
+<p>28、视野内大多数神经元同步发放的现象，在动力学系统中叫做<strong>雪崩</strong>。</p>
+<p>29、随着神经元数量的显著性增加，会发现雪崩现象（cluster firing）的发生频率并不低；两者之间的关系服从幂率分布（也就是无标度分布）；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/12111644.png" alt=""></p>
+<p>30、场电位反应的是，神经元集群的发放和活动；</p>
+<p>31、雪崩的形成，在皮层层面也是能观察到的。雪崩的数据分析方法：在视场中，设置某个阈值，然后可以看到大于该阈值的活动，在视野中是怎么扩散的。然后统计其雪崩的大小，结论如下：从麻醉到清醒的过程中，可以看到，在麻醉时（类似与睡眠）存在慢波，全脑有比较好的同步，会出现比较大的节律活动，但节律也比较慢；在清醒的时候，就不会出现大的节律活动，会表现出来很好的<strong>幂率，临界</strong>行为；  （横坐标是雪崩pixel的数量，纵坐标是概率）</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/24964811.png" alt=""></p>
+<p>32、任务刺激后，神经元系统会很快从幂率分布的临界状态，被推离开。但是很快，又回到临界状态；结论：幂率这样的一种特征，是大脑在静息或者任务处理下，的一种基本特征。</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/14218771.png" alt=""></p>
+<p>33、 在fMR数据中，也能利用雪崩这种的数据分析方法。团簇的大小也服从幂率分布；</p>
+<p>34、结论：从小鼠的局部网路到，到大脑的全局网络中，都存在幂率这样的平衡态。</p>
+<p>35、在统计物理中，<strong>幂率分布</strong>和 临界性 、相变是相关的；物理中，需要人手工细调这个临界参数。拿大脑和物理系统中的临界状态类比，不同之处在于大脑不需要细调这样的参数，可以叫自组织临界行为。它自组织地靠近在临界态附近；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/6687732.png" alt=""></p>
+<p>36、培养皿的实验证明，当神经网络偏离临界态后，对外界的药物或者其他刺激就不太敏感了。</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/87347719.png" alt=""></p>
+<p>37、大脑有个特点，既需要同步，有需要随时解开这个同步。始终处于临界状态，能够随时切换为同步和非同步状态。这样能够对外界刺激随时做出响应； 这种状态的构建，需要花费很多的能量；</p>
+<p>38、神经网络的震荡。神经元的发放率可以是很低的，但是震荡的频率可以很高。 </p>
+<p>39、震荡在神经网络中作用是：可以提供一种稳定的时钟，有一定的周期性；震荡还能辅助不同脑区之间进行信息的耦合和交换；回路可以作为一个振子，来运作；</p>
+<p>40、神经科学的研究中，经常使用神经元发放率的变化来研究；</p>
+<h3 id="神经系统是一个功能复杂系统："><a href="#神经系统是一个功能复杂系统：" class="headerlink" title="神经系统是一个功能复杂系统："></a>神经系统是一个功能复杂系统：</h3><p>1、大脑神经系统在进化的过程中有很多进化压力，以及限制条件：比如能量、代谢、应用方面还要优化很多功能。</p>
+<p>2、所以，生物神经系统中，有这种成本和效益的均衡； 这种均衡一定会反映到它的这种结构、网络连接、结构和活动的关系上边；</p>
+<p>3、生物神经系统，到了今天这种程度，很大程度上是在低功耗限制下，无可奈何的组织方式。在没有功耗的约束下，人设计出来的系统，在某方面可以大大超越人的极限；</p>
+<p>4、大脑中的能量都花费到哪了？第一，产生动作电位；第二，传输动作电位（神经递质的释放和重构）；在这样的前提下，你必须得限制神经元发放的频率；同时，传输的路径越短越好；</p>
+<p>5、大脑希望把能量消耗减下来，那么最有效的方案是从消耗能量最大的地方做起。</p>
+<p>6、我们的大脑具有，低成本、高效能的特点：</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/89647115.png" alt=""></p>
+<p>7、稀疏的神经元点火，怎么才能有效地组织起来进行高效的信息传递呢？</p>
+<p>8、结构上经济的连接方法， 也得支撑起功能上最经济的动态活动；</p>
+<p>9、神经元的发放是没有规则的。<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mu411y7M4?t=6657.6">https://www.bilibili.com/video/BV1mu411y7M4?t=6657.6</a></p>
+<h3 id="神经动力学建模"><a href="#神经动力学建模" class="headerlink" title="神经动力学建模"></a>神经动力学建模</h3><p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/96731886.png" alt=""></p>
+<p>1、通过模型，更好的理解看到的数据；</p>
+<p>2、参数化的模型，和非参数话的模型；</p>
+<p>3、自己设计一个模型，通过改变模型参数，能够迅速得到实验结果，在真实的实验中，往往不能轻易做到这一点。</p>
+<p>4、如何描述系统的相互作用；</p>
+<p>5、考虑数据和模型之间的融合；</p>
+<p>6、模型是对真实系统的一个想象；</p>
+<p>7、做模型研究中，需要考虑的四个问题：（1）计算和分析的复杂性要和机制理解之间取得某种平衡；（2）面对生物的真实性，有没有数据能够帮忙进行建模，即参数预测；（3）生物学家觉得很多细节都是很重要的，但是系统科学家，知道有主要影响因素和次要影响因素；（4）原则和细节如何达到某种平衡；如何把复杂系统的理解和神经科学家们的理解联系起来？</p>
+<p>8、有两种建模方法：（1）现象级的模型；（2）机制性的模型；</p>
+<p>9、第三种建模方式：介于现象性和机制性之间的模型：通过机器学习的方法，训练网络是的大致满足响应的功能，然后加入生物学中的一些限制，比如兴奋性神经元和抑制性神经元达到什么样的比例、等，这样模型在学习的过程中表现出来的动力学很有可能和生物的动力学类似；</p>
+<p>10、神经生物学现有的模型：</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/14128651.png" alt=""></p>
+<h3 id="几个真实的神经动力学建模例子"><a href="#几个真实的神经动力学建模例子" class="headerlink" title="几个真实的神经动力学建模例子"></a>几个真实的神经动力学建模例子</h3><p>1、思考的几个问题：（1）单个神经元无规则的发放怎么跟神经雪崩、震荡，联系起来？（2）什么样的成分起主要作用的呢？（3）什么样复杂的机制能够把动力学统一起来？（4）如何满足成本收益平衡的？cost-efficient；</p>
+<p>2、周老师采用的分析方法：使用生物上合理的神经元网络模型，加上统计物理学上的分析；来理解这些特征。</p>
+<p>3、 Random E-I Recurrent network的模型如下：（1）大概有2500颗神经元（80%的兴奋性神经元）、（2）随机网络、（3）连接概率约为0.2，泊松输入；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/79677761.png" alt=""></p>
+<p>4、神经元的耦合，属于突触耦合：（1）一个神经元的激发会带给另外一个神经元类似alpha的输入；（2）兴奋神经元的窗口大小约为2~5ms，抑制性神经元窗的大小约为5~10ms；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/32532867.png" alt=""></p>
+<p>5、E-I模型的方程如下：对于一个神经元，首先（1）膜电位会有一个漏电，（2）兴奋性神经元输入给它的，有一个alpha的电导，电流依赖于现在神经元的电压（3）抑制性神经元输入给它的，（4）外界的输入；（5）电导的变化是两个alpha函数；兴奋的快一点，抑制的慢一点；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/449271.png" alt=""></p>
+<p>6、E-I模型是一个非常大的突破，还有一个介绍了gamma波的形成机制。之前人们认为：神经元的发放是无规则的进行，而且神经元之间没有关联性；后来人们意识到：神经元的发放可以出现同步，也可以出现震荡（但是震荡的时候不是每次都被激发）；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/86932987.png" alt=""></p>
+<p>7、周老师提出来的模型，统一了上述三者。（1）做到了兴奋性和抑制性的一种平衡；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/42299684.png" alt=""></p>
+<p>8、周老师在自己的模型上，讨论了：（1）兴奋性神经元和抑制性神经元，窗口关闭的大小；当两者都比较大（6ms）的时候，出现的是Asynchronous状态（不同步的）、当激活t=4，抑制t=10的时候，会出现轻微的同步状态（moderately synchronized）、当激活t=2ms，抑制t=14ms时，会出现强同步状态（Strongly synchronized）；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/98179939.png" alt=""></p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/78279308.png" alt=""></p>
+<p>9、这个参数下（激活t比较小，抑制t比较大），神经动力学出现在临界状态，此时神经元的可以比较随机，也可以出现微弱的同步变化。</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/58479483.png" alt=""></p>
+<p>10、在过渡态，有比较好的幂率分布。如果是随机状态， 更像指数分布，</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/86658793.png" alt=""></p>
+<p>结论：神经元随机发放、震荡产生gamma波、以及出现雪崩是可以同时在这样的随机网络中出现的；</p>
+<p>11、横轴是，神经元同步性的测量、纵轴是不规则性的测量、震荡的幅度、以及幂率的分布：</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/81812281.png" alt=""></p>
+<p>12、这种属于抑制平衡的状态；不是平均值上的平衡，而是静息上的平衡。兴奋和抑制有个loop。首先兴奋性神经元起来，导致抑制性神经元跟着起来，抑制神经元放过来会压住兴奋性神经元，但是两者的时间窗大小不一样，存在一个时间差lag，这个时间差lag的存在就允许神经元在外界的刺激下兴奋起来，进行发放；一旦发放了，下次回来的时候，就是一个随机网络，可能被压住了，表现出来的话就是其他神经元进行发放；宏观上，表现出来神经元的发放是没有规则的；但是在个窗口下，有很多神经元是有机会一起发放的；从而产生了雪崩；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/20551696.png" alt=""></p>
+<p>13、一个非常形象的比喻：一个班级里边，小孩们吵吵闹闹的，老师呢是有一定容忍度的，说一两句也无所谓，但是超过这个容忍度呢，老师就会拿眼睛瞪一眼领头的学生，这个时候就安静下来了。过一会，又有其他学生起头吵吵闹闹，每次吵吵的学生都不是同一个学生。</p>
+<p>14、理论上，如何描述这样的现象：可以简化成拥有6个变量的非线性方程；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/57212859.png" alt=""></p>
+<p>15、所谓模型中不同步的状态，就是对应到发放率是一个不动点的；平均来说它有一个固定的发放率；</p>
+<p>16、有了这个模型后，就可以分析非线性动力学的不动点。有个稳定点，它是稳定的，或者不稳定的。然后给它一个局部的微扰，稳定不稳定呢就看它的特征值。如果特征值是正的，小小的扰动就会被放大，这个稳定点就站不住了，进入震荡的状态；从没有震荡到震荡这个状态的过渡中，可以测量震荡的这个频率和神经元发放的频率；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/45372031.png" alt=""></p>
+<p>1/10的结果和生物上的测量保持了一致性；</p>
+<p>17、在非线性动力学中呢，这种正好处于临界的状态，也叫做Hopf分叉。即从没有震荡到进入震荡的过程；</p>
+<p>18、雪崩也可以进行刻画，比如抛落、大小。这些和幂率指数之间的关联；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/55745451.png" alt=""></p>
+<h3 id="少即是多-神经回路动力学的成本效益"><a href="#少即是多-神经回路动力学的成本效益" class="headerlink" title="少即是多:神经回路动力学的成本效益"></a>少即是多:神经回路动力学的成本效益</h3><p>1、神经发放的经济学；神经元的发放可以表征一些信息；希望表征的容量尽可能的大；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/15378866.png" alt=""></p>
+<p>2、构造一个熵最大的模型：</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/21601457.png" alt=""></p>
+<p>3、在参数空间中，把神经元的发放率和能量效率给画出来。</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/14596393.png" alt=""></p>
+<p>结论：在临界状态下，发放的代价是效率是最高的，代价是最低的；</p>
+<p>4、上述的探究都是在局部的随机网络中进行的，实际上网络是存在结构和层次的。</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/60881525.png" alt=""></p>
+<p>5、为什么紧密的连接，会产生关联的活动呢？因为，当两个神经元有共同的邻居后，他们的输入就被关联起来了；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/90004197.png" alt=""></p>
+<p>6、总结：（1）神经动力学是多尺度的，很复杂；（2）一方面收到能量的限制，另一方需要满足有效的信息处理；（3）周老师构建出来的是这种兴奋抑制平衡的神经网络；这种网络会出现集群和震荡的发放；（4）兴奋和抑制的loop，导致时间窗的随机，在动力学上，就会产生自反馈。有延迟的抑制自反馈呢，在理论上就会产生 hopf分叉；从不动点，到震荡的相变；这属于大自然的设计。（5）这种组织方式可以花费很少的代价，实现很高效的功能。</p>
+<h3 id="信息处理中的复杂神经动力学-学习和记忆补救"><a href="#信息处理中的复杂神经动力学-学习和记忆补救" class="headerlink" title="信息处理中的复杂神经动力学-学习和记忆补救"></a>信息处理中的复杂神经动力学-学习和记忆补救</h3><p>1、大脑的自发活动和刺激之间如何进行交互？（1）减少trail-to-trail的变异性；（2）偏离临界性，很快又重构这种临界性；雪崩服从幂率分布（3）改变震荡的频率；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/11349432.png" alt=""></p>
+<p>2、共识：什么是记忆？目前的共识是，大脑中有一群神经元可以一起激发来表征记忆。</p>
+<p>3、几毫秒的时间尺度，对于记忆的形成和突触的变化也是非常重要的；神经的可塑性也是一个非常重要的点（Plasticity）</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/32971294.png" alt=""></p>
+<p>4、 一旦出现gamma波（或者说gamma波涌现出来），神经系统的学习率也得到了迅速的增强。</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/37271572.png" alt=""></p>
+<h3 id="在意识恢复过程中复杂的皮层波的传播"><a href="#在意识恢复过程中复杂的皮层波的传播" class="headerlink" title="在意识恢复过程中复杂的皮层波的传播"></a>在意识恢复过程中复杂的皮层波的传播</h3><p>1、进入更大的尺度，皮层波；</p>
+<p>2、悉尼大学的Gong老师，做计算神经科学非常厉害的一位老师；使用了Phase velocity field（相速度场）</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/88373350.png" alt=""></p>
+<p>3、接下来就可以对波源、波汇、鞍点进行分析；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/11922963.png" alt=""></p>
+<p>4、波源分布的结构和解剖的结构也是有联系的；</p>
+<p>5、从麻醉到清醒的过程，也是一个意识恢复的过程；</p>
+<h3 id="大规模功能连接-层级模块化组织、多样性、平衡性和认知能力"><a href="#大规模功能连接-层级模块化组织、多样性、平衡性和认知能力" class="headerlink" title="大规模功能连接:层级模块化组织、多样性、平衡性和认知能力"></a>大规模功能连接:层级模块化组织、多样性、平衡性和认知能力</h3><p>1、模块化、层次化支持神经网络的功能分离。</p>
+<p>2、结构和模块的功能影响；</p>
+<p>3、Hyper-community（不要用Rich-club）</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/56919329.png" alt=""></p>
+<p>4、看似很复杂的一个模式，进行本征分解之后，会得到两个非常简单的模式的叠加：</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/89077584.png" alt=""></p>
+<p>5、大脑中存在很多模块化的机构。通过拉普拉斯分解，就能得到这样的结构；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/2394443.png" alt=""></p>
+<p>6、直接把结构翻译成功能连接：</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/6796395.png" alt=""></p>
+<p>7、用雪崩来测量人的大脑：</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/68966992.png" alt=""></p>
+<p>8、如果大脑脑区和脑区之间的连接过于强的话，就类似与癫痫状态，无法分化出具体的功能：</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/48044632.png" alt=""></p>
+<p>9、这种分析思路非常值得借鉴，我不直接给一个硬阈值，这样会把有意义的连接直接绊掉。而是设计了一个模型，通过遍历模型的参数，看看什么参数下，模型的结果和真实结果最接近，然后理解数据背后的意义；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/64341860.png" alt=""></p>
+<p>10、通过模的测度，定义了一种所谓功能的整合；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/4865572.png" alt=""></p>
+<p>11、个体的差异，能够来表征我们的能力、疾病等…</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/11444374.png" alt=""></p>
+<h3 id="机器学习的神经计算模型"><a href="#机器学习的神经计算模型" class="headerlink" title="机器学习的神经计算模型"></a>机器学习的神经计算模型</h3><p>1、人工智能和神经科学结合的一个方向（周老师的思考）</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/60627884.png" alt=""></p>
+<p>2、如何感知时间，维护时间？</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/45018577.png" alt=""></p>
+<h3 id="总结-Summary"><a href="#总结-Summary" class="headerlink" title="总结 Summary"></a>总结 Summary</h3><p>1、大脑是一个复杂动态网络系统 ，结构连接的活动、行为、障碍。都是有可能通过复杂网络连接的框架，进行些分析的；基本的想法是：模型和动力学的建模，可以帮助我们理解大脑的工作原理，这种相互作用，或者跨层次的原理。这种理解，可以指导我们理解和分析这种多尺度的数据；没有系统的认识的话，去理解大脑神经元的工作或许是很辛苦的；</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/41435676.png" alt=""></p>
+<p>2、从复杂网络、动力学的视角理解神经网络：一些现成的工作；（1）多层次、（2）临界性、（3）功能分离、（4）个体差异、（5）cost-efficiency</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/28458754.png" alt=""></p>
+<p>3、实验室的基本框架：</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/32082491.png" alt=""></p>
+<p>4、脑神经科学的展望：复杂中也有可能包含很多信息。</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/86509403.png" alt=""> </p>
+<p>5、大脑又复杂又高效，如何平衡的？</p>
+<p><img src="https://imagewwyt-1312423176.cos.ap-guangzhou.myqcloud.com/img/15598507.png" alt=""></p>
+<p>6、动力学、系统的方法；</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/25/%E8%AF%BB%E3%80%8A%E9%9D%A9%E5%91%BD%E6%97%B6%E6%9C%9F%E7%9A%84%E7%88%B1%E6%83%85%E3%80%8B/" rel="prev" title="读《革命时期的爱情》">
+      <i class="fa fa-chevron-left"></i> 读《革命时期的爱情》
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/07/%E7%AC%94%E8%AE%B0(%E7%9F%B3%E7%BE%A4)-%E7%94%B5%E8%B7%AF/" rel="next" title="电路-课程笔记">
+      电路-课程笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">背景介绍：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%B3%BB%E7%BB%9F%E6%98%AF%E4%B8%80%E4%B8%AA%E5%8A%9F%E8%83%BD%E5%A4%8D%E6%9D%82%E7%B3%BB%E7%BB%9F%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">神经系统是一个功能复杂系统：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6%E5%BB%BA%E6%A8%A1"><span class="nav-number">4.</span> <span class="nav-text">神经动力学建模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E7%9C%9F%E5%AE%9E%E7%9A%84%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6%E5%BB%BA%E6%A8%A1%E4%BE%8B%E5%AD%90"><span class="nav-number">5.</span> <span class="nav-text">几个真实的神经动力学建模例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%91%E5%8D%B3%E6%98%AF%E5%A4%9A-%E7%A5%9E%E7%BB%8F%E5%9B%9E%E8%B7%AF%E5%8A%A8%E5%8A%9B%E5%AD%A6%E7%9A%84%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A"><span class="nav-number">6.</span> <span class="nav-text">少即是多:神经回路动力学的成本效益</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E5%A4%84%E7%90%86%E4%B8%AD%E7%9A%84%E5%A4%8D%E6%9D%82%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6-%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%AE%B0%E5%BF%86%E8%A1%A5%E6%95%91"><span class="nav-number">7.</span> <span class="nav-text">信息处理中的复杂神经动力学-学习和记忆补救</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E6%84%8F%E8%AF%86%E6%81%A2%E5%A4%8D%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%A4%8D%E6%9D%82%E7%9A%84%E7%9A%AE%E5%B1%82%E6%B3%A2%E7%9A%84%E4%BC%A0%E6%92%AD"><span class="nav-number">8.</span> <span class="nav-text">在意识恢复过程中复杂的皮层波的传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%8A%9F%E8%83%BD%E8%BF%9E%E6%8E%A5-%E5%B1%82%E7%BA%A7%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BB%84%E7%BB%87%E3%80%81%E5%A4%9A%E6%A0%B7%E6%80%A7%E3%80%81%E5%B9%B3%E8%A1%A1%E6%80%A7%E5%92%8C%E8%AE%A4%E7%9F%A5%E8%83%BD%E5%8A%9B"><span class="nav-number">9.</span> <span class="nav-text">大规模功能连接:层级模块化组织、多样性、平衡性和认知能力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%A5%9E%E7%BB%8F%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9E%8B"><span class="nav-number">10.</span> <span class="nav-text">机器学习的神经计算模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-Summary"><span class="nav-number">11.</span> <span class="nav-text">总结 Summary</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Feng Zhiheng"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Feng Zhiheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feng Zhiheng</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">239k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:38</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

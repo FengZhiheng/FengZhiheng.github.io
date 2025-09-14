@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fengzhiheng.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="数学物理中的反问题，教材是：An introduction to the mathematical theory of inverse problems by Andreas Kirsch (auth.) (z-lib.org)——德国人">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数学物理中的反问题-课程笔记">
+<meta property="og:url" content="https://fengzhiheng.github.io/2020/02/17/%E7%AC%94%E8%AE%B0(%E5%91%A8%E9%93%81)-%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E4%B8%AD%E7%9A%84%E5%8F%8D%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Feng Zhiheng&#39;s Blog">
+<meta property="og:description" content="数学物理中的反问题，教材是：An introduction to the mathematical theory of inverse problems by Andreas Kirsch (auth.) (z-lib.org)——德国人">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-17T04:54:25.000Z">
+<meta property="article:modified_time" content="2025-09-14T13:57:40.005Z">
+<meta property="article:author" content="Feng Zhiheng">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fengzhiheng.github.io/2020/02/17/%E7%AC%94%E8%AE%B0(%E5%91%A8%E9%93%81)-%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E4%B8%AD%E7%9A%84%E5%8F%8D%E9%97%AE%E9%A2%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数学物理中的反问题-课程笔记 | Feng Zhiheng's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Feng Zhiheng's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">      
+      
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">      
+      
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">      
+      
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fengzhiheng.github.io/2020/02/17/%E7%AC%94%E8%AE%B0(%E5%91%A8%E9%93%81)-%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E4%B8%AD%E7%9A%84%E5%8F%8D%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Feng Zhiheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Feng Zhiheng's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数学物理中的反问题-课程笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-17 12:54:25" itemprop="dateCreated datePublished" datetime="2020-02-17T12:54:25+08:00">2020-02-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-09-14 21:57:40" itemprop="dateModified" datetime="2025-09-14T21:57:40+08:00">2025-09-14</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>数学物理中的反问题，教材是：<br>An introduction to the mathematical theory of inverse problems by Andreas Kirsch (auth.) (z-lib.org)——德国人</p>
+<span id="more"></span> 
+<hr>
+<h3 id="Lecture-1"><a href="#Lecture-1" class="headerlink" title="Lecture-1"></a>Lecture-1</h3><p>2020年2月17日12:56:32<br>数学物理方程，指的就是偏微分方程<br>课程的名字，有问题。是外行人写的。</p>
+<p>想说的是，偏微分方程的反问题。——属于比较难的一类。</p>
+<h4 id="这门课的名称应该叫：反问题的数学理论与算法："><a href="#这门课的名称应该叫：反问题的数学理论与算法：" class="headerlink" title="这门课的名称应该叫：反问题的数学理论与算法："></a>这门课的名称应该叫：反问题的数学理论与算法：</h4><p>归根到底：计算数学，如何用计算机数值求解。</p>
+<p>积分方程、微分方程</p>
+<p>基本思路，把反问题，转换成一个稳定的问题，把问题离散。<br>老师只懂数学，所以从数学的角度理解这个问题。</p>
+<h4 id="课程介绍"><a href="#课程介绍" class="headerlink" title="课程介绍"></a>课程介绍</h4><p>教材的介绍<br>课程大纲，在函数空间里玩儿。<br>希尔伯特空间，有内积会很方便。<br>最好学过泛函分析。没学过泛函分析，可能有点难<br>数值计算，可以弥补。<br>一般第三章介绍不完。</p>
+<p>关键词：积分方程、紧算子、奇异值分解、第一类线性方程、微分方程、特征值（实际能够测到的）、有限元、希尔伯特空间、几何分析、数值计算（这是这门课的非常基础的内容）</p>
+<p>离散天生就有正则化的性质。</p>
+<p>第四章开始，反问题的三个special case。<br>第五章，一种特殊的成像<br>第六章，反散射，雷达技术</p>
+<p>核心是第二章</p>
+<p>开这门课的目的是：<br>张XXX希望在这方面做一些工作。希望北大也开展这方面的问题的研究。</p>
+<p><strong>考核的方式</strong>：</p>
+<ol>
+<li>之前——&gt;闭卷考试的方式、变成了考泛函分析。</li>
+<li>变成了：前边，老师讲线性反问题的理论。后边同学们每个人讲一些内容。结合自己的研究工作，从这门课得到哪些有帮助的东西。把问题讲清楚。根据你讲的情况，给你一个成绩。只要你愿意，你只要能停下来，讲讲你自己做的东西。就能deserve一个比较好的成绩。自己的学生，正则化理论，你怎么用的？</li>
+</ol>
+<p>如果不符合以上的内容，怎么办？问题不大，第一种，你可以根据老师讲的东西，觉得老师讲的不清楚，你再仔细讲一讲。<br>第二种，之前你思考的问题和反问题不相关，但是现在你开始从反问题的角度思考这种问题，和大家分享讲一讲。第三种，之前你在哪了看到了一篇关于反问题的paper，把paper里的内容讲一讲。</p>
+<p>口试是非常厉害的考察方式。</p>
+<p>老师非常主观地给成绩。</p>
+<p>老师觉得思想很重要。</p>
+<p>老师好，我的麦克风出现了点问题，所以只能通过文字交流。选这门课，主要想通过这门课拓展一下自己的思维方式。因为在我的研究领域中，很多问题都是反问题，没有正解。我的研究方向是神经生物方向，探讨的是引起疼痛背后的神经学机制。</p>
+<p>其实关心这门课，是因为我的导师说，我们实验室关心的问题都是反问题，但是我都不知道反问题是什么，所以我想来向专家请教请教，到底什么才是反问题。遇到反问题，用正则化就能完全解决吗？</p>
+<p>积分方程的求解问题。</p>
+<p>紧算子有奇异值分解，所有都能看得非常清楚。</p>
+<h4 id="为什么要研究反问题呢？"><a href="#为什么要研究反问题呢？" class="headerlink" title="为什么要研究反问题呢？"></a>为什么要研究反问题呢？</h4><p>三元组。</p>
+<p>什么样的输入，会造成这样的输出？</p>
+<ul>
+<li>正整数乘法与因子分解问题【正反问题】，为什么呢，为什么正整数乘法叫正问题，因子分解叫反问题？因为乘法容易算，反问题不容易算，甚至反问题的解不是唯一的。</li>
+<li>一元多项式求值与插值问题；</li>
+<li>函数的积分与微分问题；</li>
+<li>函数的积分与微分问题；<br>  老师：一定要把积分问题当成正问题，把微分问题当成反问题。因为积分问题越积分，越稳定。如果你的问题有误差，越微分，这个误差就越被放大。<br>  老师：一般有这样的规律：一个方向的变换越稳定，它的反问题就越不问题。反卷积非常不稳定。<br>  图像的去噪、去模糊、超分辨也算是个反问题</li>
+<li>Fourier变化与反变换；</li>
+</ul>
+<p>定义：</p>
+<ol>
+<li>正问题：已知输入和系统，求输出</li>
+<li>重构问题：已知系统和输出，求输入</li>
+<li>系统辨识问题：已知输入和输出，求系统参数<br>2和3都是反问题</li>
+</ol>
+<p>X是一个集合，这个集合有一定的数学结构，怎么理解呢？<br>:=  叫做，y定义成。<br>K是一个算子</p>
+<p>我的理解：机器学习的训练过程就是一个反问题求解的过程。</p>
+<p>弯弯，叫做tiuta</p>
+<p>第一类方程：<br>1.xxx2.xxxx3.卷积</p>
+<p>如果算子可逆，那么谁正，谁逆就无所谓了。</p>
+<p>K^{-1}的性质不好了，因为他是无界的，为什么？</p>
+<hr>
+<h3 id="Lecture-2-Part1"><a href="#Lecture-2-Part1" class="headerlink" title="Lecture-2-Part1"></a>Lecture-2-Part1</h3><p>本次课的主题是：反问题的举例</p>
+<h4 id="地质探测问题"><a href="#地质探测问题" class="headerlink" title="地质探测问题"></a>地质探测问题</h4><p>问题描述，在地面上测量一些物理量，来推测地下看不见的一些物体的参数。<br>正问题：已知密度p(x)求地表重力场f_v(x)<br>反问题：已知地表重力场f_v(x)求密度p(x)，这等价于解<em>第一类线性Fredholm积分方程</em>（卷积方程）</p>
+<h4 id="航测地形问题"><a href="#航测地形问题" class="headerlink" title="航测地形问题"></a>航测地形问题</h4><p>飞机在地面上空水平飞行，用仪器测量下面一个密度为常数p的山丘产生的重力场f，进而确定山丘的形状y=phi(x)</p>
+<p>山丘形状phi(x)满足<em>第一类非线性Fredholm积分方程</em><br>正问题：已知山的形状phi(x)，要求重力场f(x);<br>反问题：已知重力场f(x)，要求山的形状phi(x),这里要解的是第一类非线性Fredholm积分方程</p>
+<h4 id="X射线层析成像问题（XCT）"><a href="#X射线层析成像问题（XCT）" class="headerlink" title="X射线层析成像问题（XCT）"></a>X射线层析成像问题（XCT）</h4><p>设x-y平面上一个物体对X射线的吸收系数f(x,y)，在这个平面内，X射线沿直线L投射这个物体。将直线L用参数(s,delt)表示L_{s,delt}</p>
+<p>Radon变换，拉登变换</p>
+<p>正问题：已知物体的吸收系数f(x,y)，计算所有穿过物体的直线上的线积分(Rf)(s,delt}).<br>反问题：已知一些穿过物体的直线上的线积分(Rf)(s,delt})，要确定吸收系数f(x,y)</p>
+<h4 id="逆热传导问题"><a href="#逆热传导问题" class="headerlink" title="逆热传导问题"></a>逆热传导问题</h4><p>正问题：根据初始温度分布f(x)，求解t&gt;0的温度分布u(x,t)。<br>逆热传导问题：已知某个T&gt;0时刻的温度分布g(x) = u(x,T)，求解初始温度分布f(x)，即求解第一类Fredholm积分方程。  </p>
+<p>已知解，求初值问题</p>
+<p>这里的k是一个非常光滑的核函数，f是一个不太光滑的函数，两者相乘之后再积分得到也是一个非常光滑的函数。有一个规律，基本上积分算子越光滑，解积分算子的解就越难</p>
+<p>正的过程指数衰减，逆的过程指数增长</p>
+<h4 id="极端环境温度监测问题"><a href="#极端环境温度监测问题" class="headerlink" title="极端环境温度监测问题"></a>极端环境温度监测问题</h4><p>记探测棒上x处在时刻t的温度测量值为u(x,t)，现在的问题是要通过u(x,t)实时地检测内部的问题f(t)=u(0,t)  </p>
+<p>已知解，求边值问题</p>
+<p>即，内外温度满足一个第一类卷积型Volterra积分方程。</p>
+<h4 id="图像去模糊问题"><a href="#图像去模糊问题" class="headerlink" title="图像去模糊问题"></a>图像去模糊问题</h4><p>照相机或其他图像采集设备可以把一个物体转换为图像，从数学上看，二维物体是一个二元函数f：R^2-&gt;R，采集的图像是另一个函数g:R^2 -&gt;R .<br>图像采集过程可以抽象为g=Kf，K是一个表示采集过程的算子。完美的采集过程应该对应K=I（恒同算子）.<br>积分核函数k(x)称为采集过程的点扩散函数（PSF），它是成像系统对点光源的响应，它应该是delt函数的某种近似。</p>
+<p>点扩散函数应该满足积分等于1。</p>
+<p>图像图模糊问题：已知点扩散函数和采集的图像g(x)求物体f(x)，即求解第一类fredholm积分方程。<br>图像去模糊问题与逆热传导问题有密切联系。</p>
+<hr>
+<h4 id="带限信号外推问题"><a href="#带限信号外推问题" class="headerlink" title="带限信号外推问题"></a>带限信号外推问题</h4><h4 id="反散射问题"><a href="#反散射问题" class="headerlink" title="反散射问题"></a>反散射问题</h4><h4 id="X射线相位衬度层析成像"><a href="#X射线相位衬度层析成像" class="headerlink" title="X射线相位衬度层析成像"></a>X射线相位衬度层析成像</h4><h4 id="扩散光学层析成像"><a href="#扩散光学层析成像" class="headerlink" title="扩散光学层析成像"></a>扩散光学层析成像</h4><h4 id="光声层析成像"><a href="#光声层析成像" class="headerlink" title="光声层析成像"></a>光声层析成像</h4><hr>
+<h3 id="Lecture-3"><a href="#Lecture-3" class="headerlink" title="Lecture-3"></a>Lecture-3</h3><p>2020年3月2日  不适定问题<br>well-posed 是限定的</p>
+<p>Inverse crime</p>
+<p>解正问题的时候，不能用和解反问题一样的网格，不然会出现inverse crime问题.</p>
+<p>活了这么久，什么美都没体会到过。数学有美，音乐有美，诗歌有美，小说有美，编程有美，演讲有美，科学有美。这些美不像身材、外貌，连傻子都能轻而易举地体会到。要想体会这些美，得需要付出超越蝼蚁千百倍的努力，得坐得了冷板凳，耐得住寂寞，静下去心。</p>
+<h3 id="Lecture-4"><a href="#Lecture-4" class="headerlink" title="Lecture-4"></a>Lecture-4</h3><p>2020年3月9日</p>
+<p>积分算子。</p>
+<p>紧算子，巴拿赫空间，泛函分析（细节很多，需要自己学），希尔伯特空间，数学分析中的狭积分，连续，一致连续（证明时，常用反证法）。<br>紧算子的性质。巴拿赫空间中定义伴随算子。  </p>
+<p>积分算子一般都是紧算子。</p>
+<p>无穷空间上的，紧算子求解问题。</p>
+<p>数值解，天生有误差。不仅计算有误差，数据本身也有误差。</p>
+<p>通过加先验知识，来约束解，来恢复稳定性。</p>
+<p>数学专业的同学，需要修什么课【清华大学】？<br>大二：数学分析<em>，高等代数</em>，解析几何，常微分方程<em>，概率论</em>，复变函数，运筹学，数值计算；第三：微分几何<strong>，实变函数</strong>，数学物理方程<strong>，组合数学，证券投资分析，泛函分析</strong>，数理逻辑，点集拓扑学，近世代数*，数学分析绪论。还有可以选的：图论及其应用，离散数学，数学软件应用，数学建模，高等代数绪论，常微分方程绪论，数理统计，应用多元分析，生物数学。<br>以下是清华大学数学与应用数学专业、信息与计算科学专业本科培养方案中的要求：本专业所有方向的基础核心课程10门，41学分：数学分析(1)(5学分)、数学分析(2)(5学分)、数学分析(3)(4学分)、高等代数与几何(1)(4学分)、高等代数与几何(2)(4学分)、微分方程(1)(3学分)、抽象代数(4学分)、复分析(4学分)、测度与积分(4学分)、概率论(1)(4学分)。基础数学方向的其他本科核心课程4门，16学分：泛函分析(1)(4学分)、拓扑学(4学分)、偏微分方程(4学分)、微分几何(4学分)。<br>应用数学方向的其他本科核心课程4门，16学分：泛函分析(1)(4学分)、偏微分方程(4学分)、数值分析(4学分)、应用分析(4学分)。<br>概率统计方向的其他本科核心课程4门，15学分：统计推断(4学分)、线性回归(3学分)、应用随机过程(4学分)、数值分析(4学分)。<br>计算数学的其他本科核心课程4门，16学分：泛函分析(1)(4学分)、偏微分方程(4学分)、数值分析(4学分)、偏微分方程数值解(4学分)。<br>运筹学与控制论方向的其他本科核心课程4门，16学分：泛函分析(1)(4学分)、数值分析(4学分)、数学规划(4学分)、离散数学(4学分)。</p>
+<p>数学分析，中国科学技术大学，史济怀老师的课，讲的非常好。知乎上说的。<br>为什么学习数学分析，这个问题的答案，数的绪论部分应该有讲，我为什么想自学这门课呢？一是想建立基本的数学描述语言，比如常见的数学描述用语等；二是很多数学概念都不懂啊，特别是上反问题这门课，什么都不懂，各种数学概念“紧算子，巴拿赫空间，泛函分析（细节很多，需要自己学），希尔伯特空间”啥的，一个也不理解，很苦恼。完全不在一个话语体系里。反过来说，我到底理解什么样的话语体系呢？答案是什么都不理解：数学语言描述体系中，毫无建树。深度学习体系中，毫无建树。神经生物学领域，毫无建树。苦恼啊。计算机编程语言中，毫无建树（分布式，线程池，SpringBoot框架等）。阿西吧，好难。</p>
+<hr>
+<p>Lecture-5<br>3月12日</p>
+<hr>
+<p>Lecture-6<br>2020年3月16日<br>这节课还是听不懂，去wiki上找找名词的定义吧</p>
+<hr>
+<p>Lecture-7<br>2020年3月23日<br>没听，sad</p>
+<hr>
+<p>Lecture-8<br>2020年3月26日<br>测量数据中有误差、所以不能无限地去fitting测量数据——over fitting现象</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/17/%E7%AC%94%E8%AE%B0(%E6%AE%B5%E5%B0%8F%E6%B4%81)-%E7%A5%9E%E7%BB%8F%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%AE%BA/" rel="prev" title="神经工程概论-课程笔记">
+      <i class="fa fa-chevron-left"></i> 神经工程概论-课程笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/19/%E8%AF%BB%E3%80%8A%E8%84%91%E7%A0%94%E7%A9%B6%E7%9A%84%E5%B4%8E%E5%B2%96%E9%81%93%E8%B7%AF%E3%80%8B/" rel="next" title="读《脑研究的崎岖道路》">
+      读《脑研究的崎岖道路》 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lecture-1"><span class="nav-number">1.</span> <span class="nav-text">Lecture-1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E9%97%A8%E8%AF%BE%E7%9A%84%E5%90%8D%E7%A7%B0%E5%BA%94%E8%AF%A5%E5%8F%AB%EF%BC%9A%E5%8F%8D%E9%97%AE%E9%A2%98%E7%9A%84%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">这门课的名称应该叫：反问题的数学理论与算法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.2.</span> <span class="nav-text">课程介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%A0%94%E7%A9%B6%E5%8F%8D%E9%97%AE%E9%A2%98%E5%91%A2%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">为什么要研究反问题呢？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lecture-2-Part1"><span class="nav-number">2.</span> <span class="nav-text">Lecture-2-Part1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%B0%E8%B4%A8%E6%8E%A2%E6%B5%8B%E9%97%AE%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">地质探测问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%88%AA%E6%B5%8B%E5%9C%B0%E5%BD%A2%E9%97%AE%E9%A2%98"><span class="nav-number">2.2.</span> <span class="nav-text">航测地形问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#X%E5%B0%84%E7%BA%BF%E5%B1%82%E6%9E%90%E6%88%90%E5%83%8F%E9%97%AE%E9%A2%98%EF%BC%88XCT%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">X射线层析成像问题（XCT）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%86%E7%83%AD%E4%BC%A0%E5%AF%BC%E9%97%AE%E9%A2%98"><span class="nav-number">2.4.</span> <span class="nav-text">逆热传导问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%81%E7%AB%AF%E7%8E%AF%E5%A2%83%E6%B8%A9%E5%BA%A6%E7%9B%91%E6%B5%8B%E9%97%AE%E9%A2%98"><span class="nav-number">2.5.</span> <span class="nav-text">极端环境温度监测问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E5%8E%BB%E6%A8%A1%E7%B3%8A%E9%97%AE%E9%A2%98"><span class="nav-number">2.6.</span> <span class="nav-text">图像去模糊问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E9%99%90%E4%BF%A1%E5%8F%B7%E5%A4%96%E6%8E%A8%E9%97%AE%E9%A2%98"><span class="nav-number">2.7.</span> <span class="nav-text">带限信号外推问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E6%95%A3%E5%B0%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.8.</span> <span class="nav-text">反散射问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#X%E5%B0%84%E7%BA%BF%E7%9B%B8%E4%BD%8D%E8%A1%AC%E5%BA%A6%E5%B1%82%E6%9E%90%E6%88%90%E5%83%8F"><span class="nav-number">2.9.</span> <span class="nav-text">X射线相位衬度层析成像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A9%E6%95%A3%E5%85%89%E5%AD%A6%E5%B1%82%E6%9E%90%E6%88%90%E5%83%8F"><span class="nav-number">2.10.</span> <span class="nav-text">扩散光学层析成像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%89%E5%A3%B0%E5%B1%82%E6%9E%90%E6%88%90%E5%83%8F"><span class="nav-number">2.11.</span> <span class="nav-text">光声层析成像</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lecture-3"><span class="nav-number">3.</span> <span class="nav-text">Lecture-3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lecture-4"><span class="nav-number">4.</span> <span class="nav-text">Lecture-4</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Feng Zhiheng"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Feng Zhiheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feng Zhiheng</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">239k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:38</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
